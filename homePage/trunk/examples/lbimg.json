@@ -1,0 +1,9 @@
+﻿ {
+ 	"data":
+     [
+        {"image_path":"../av-modules/src/static/img/1.jpg"},
+        {"image_path":"../av-modules/src/static/img/2.jpg"},
+        {"image_path":"../av-modules/src/static/img/3.jpg"}
+                                                                                                   
+     ]
+ }

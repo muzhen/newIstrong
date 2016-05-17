@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<meta charset="utf-8">
+<title>try4</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1">
+
+<link href="../av-modules/bootstrap/3.3.4/bootstrap.min.css" rel="stylesheet">
+
+</head>
+<body  >
+
+<div class="container-fluid"   ms-controller="test">
+    <div class="row">
+        <div style="position:relative; padding:30px;" ms-controller="mytest"  ms-include-src="{{tpl}}"  data-include-rendered="clicktest">
+
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript" src="../av-modules/require.js" ></script>
+<script type="text/javascript" src="../av-modules/require-helper.js"></script>
+
+<script>
+    //(["avalon","try4","flexible","flexible_Css"这几个加载好后再进行下面的操作
+    require(["avalon","try4","flexible","flexible_Css"],function(avalon,try4){
+
+        avalon.ready(function(){
+            //定义范围
+            var try4_page=try4.init({clid:"mytest"});
+            //需要的数据加载
+            try4_page.init({
+                dataurl:{
+                    lbimg:"try4.json",
+                    tableda:"try4-2.json"
+                }
+            });
+
+            var at=avalon.define({
+                $id:"test",
+                //加载html片段,是require-helper.js里面的路径定义
+                tpl:require.toUrl('try4')+'.tpl',
+                //对加载好的页面进行数据操作
+                clicktest:function(){
+                   alert("对加载后的页面进行操作")
+                }
+            });
+
+            avalon.scan();
+
+        });
+    })
+</script>
+
+</body>
+</html>

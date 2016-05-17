@@ -1,0 +1,16 @@
+.pa{
+    padding-left: 7px;
+    padding-right: 7px;
+    margin-top: 5px;
+    text-align: center;
+}
+.he{
+    height: 57px;
+    font-family:"微软雅黑";
+    font-size: 15px;
+}
+.bgco{ 
+    background-color:#0274d4;
+    vertical-align: middle !important;
+    color: white;
+}

@@ -1,0 +1,33 @@
+﻿ { "data": [
+        {
+            "menu_name": "实时水情",
+            "image_path": "../av-modules/src/static/img/1.jpg",
+            "menu_moudule": "实时监测",
+            "menu_path": "water.html"
+        },
+        {
+            "menu_name": "实时雨情",
+            "image_path": "../av-modules/src/static/img/2.jpg",
+            "menu_moudule": "实时监测",
+			"menu_path": "rain.html"
+        },
+        {
+            "menu_name": "台风路径",
+            "image_path": "../av-modules/src/static/img/3.jpg",
+            "menu_moudule": "实时监测",
+			"menu_path": "http://www.istrongcloud.com:8001/release/index-lstf.html?popularize=false#route"
+        },
+        {
+            "menu_name": "卫星云图",
+            "image_path": "../av-modules/src/static/img/1.jpg",
+            "menu_moudule": "防汛发布",
+			"menu_path": "satellite.html"
+        },
+        {
+            "menu_name": "气象雷达",
+            "image_path": "../av-modules/src/static/img/2.jpg",
+            "menu_moudule": "防汛发布",
+			"menu_path": "satelliteleida.html"
+        }
+    ]
+   }

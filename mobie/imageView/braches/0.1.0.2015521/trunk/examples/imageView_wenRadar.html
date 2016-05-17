@@ -1,0 +1,57 @@
+﻿<!DOCTYPE html>
+<html>
+<meta charset="utf-8">
+<title>雷达</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1">
+
+<script src="../av-modules/flexible/js/flexible_css.js"></script>
+<script src="../av-modules/flexible/js/flexible.js"></script>
+
+<link href="../av-modules/bootstrap-3.3.4/css/bootstrap.min.css" rel="stylesheet">
+
+<!-- Link Swiper's CSS -->
+<link rel="stylesheet" href="../av-modules/swiper/css/swiper.min.css">
+
+</head>
+<body style="background-color:white">
+
+ <div class="container-fluid"   ms-controller="test">
+      <div class="row">
+           <div ms-controller="sateUrl"  ms-include-src="{{tpl}}"  data-include-rendered="func" >
+            
+           </div>
+     </div>
+</div>
+
+<script type="text/javascript" src="../av-modules/require.js" ></script>
+
+<script type="text/javascript" src="../av-modules/require-helper.js"></script>
+<script>
+require(["avalon","imageView"],function(avalon,imageView){
+
+    avalon.ready(function(){
+              
+                  var tm=avalon.define({
+                      $id:"test",
+                      tpl:require.toUrl('imageView')+'_wenRadar.tpl',
+                      func:function(){
+                        sateUrl.swiperFun();
+                        sateUrl.bordersty();  
+                       }
+                  });
+
+                  var sateUrl=imageView.init({
+                        clid:"sateUrl",
+                        urlimg:"lbimg.json", 
+                        urldata:"data.json",
+                        attrtite:["雷达站名","观测日期","数据范围","观测时间"]
+                  });
+                  
+                avalon.scan();
+                
+            });   
+      })
+</script>
+
+</body>
+</html>  

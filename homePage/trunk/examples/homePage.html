@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+   <meta charset="utf-8">
+    <title>汕尾三防预警</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1">
+
+  <link href="../av-modules/bootstrap/3.3.4/bootstrap.min.css" rel="stylesheet">
+  
+    <!-- Link Swiper's CSS 
+    <link rel="stylesheet" href="../av-modules/swiper/css/swiper.min.css">-->
+</head>
+<body style="background-color:rgba(245, 245, 245, 1.15);">
+
+   <div class="container-fluid"   ms-controller="test">
+        <div class="row">
+            <!--如果大家想在模板扫描后，隐藏loading什么的，可以使用data-include-rendered来指定回调的名字。-->
+           <div style="position:relative;" ms-controller="mytest"  ms-include-src="{{tpl}}"  data-include-rendered="clicktest">
+                  
+           </div>
+       </div>
+   </div>
+ 
+ <script type="text/javascript" src="../av-modules/require.js" ></script>
+   <script type="text/javascript" src="../av-modules/require-helper.js"></script>
+
+    <script>
+        require(["avalon","homePage","flexible","flexible_Css"],function(avalon,homePage){
+
+            avalon.ready(function(){
+
+
+              var home_page=homePage.init({clid:"mytest"});
+                // init:function(options){//页面加载时要初始化的数据，如：轮播图片、实时监测菜单
+              home_page.init({
+                  dataurl:{
+                      lbimg:"lbimg.json",//轮播图
+                      home:"home.json" //内容块
+                      }
+                });
+
+                var at=avalon.define({
+                    $id:"test",
+                    tpl:require.toUrl('homePage')+'.tpl',//加载html片段
+                    clicktest:function(){
+                      home_page.swiperFun2();//实现页签显示的展示效果
+                      home_page.swiperFun();//实现图片轮播功能
+                    }
+                  
+                });
+                avalon.scan();
+                
+            });
+        })
+    </script>
+
+</body>
+</html>  
