@@ -1,0 +1,97 @@
+ <!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <link rel="shortcut icon" type="image/ico" href="http://www.datatables.net/favicon.ico">
+    <meta name="viewport" content="initial-scale=1.0, maximum-scale=2.0">
+    <title>test1</title>
+    <link rel="stylesheet" type="text/css" href="http://www.zhuhaihengxin.com/libs/datatables/1.10.0/css/jquery.dataTables.css">
+    <link href="http://www.zhuhaihengxin.com/libs/bootstrap/2.3.2/css/bootstrap.min.css" rel="stylesheet">
+    <link href="http://www.zhuhaihengxin.com/libs/bootstrap/2.3.2/css/bootstrap-responsive.min.css" rel="stylesheet">
+    <script src="http://www.zhuhaihengxin.com/libs/jquery/1.10.2/jquery.min.js"></script>
+    <script type="text/javascript" charset="utf8" src="http://www.zhuhaihengxin.com/libs/datatables/1.10.4/js/jquery.dataTables.min.js">
+    </script>
+    <script type="text/javascript" language="javascript" class="init">
+
+        $(document).ready(function() {
+            $('#example').DataTable( {
+                "ajax": {
+                    "url": "rain-chang.txt",
+                    // "url": "http://192.168.110.233:678/WebGis/AjaxHandler/GeneralDataHandler.ashx?sqlKey=Water.GetLEDRainAndWater_DZSK&params=BeginTime,EndTime&BeginTime=2016-05-16%2008:00:00&EndTime=2016-05-17%2008:00:00",
+                    "dataSrc": ""
+                },
+                "columns": [
+                    {
+                        "data": "STNM",
+                        "title":"站名"
+                    },
+                    {
+                        "data": "R" ,
+                        "title":"雨量"
+                    },
+                    {
+                        "data": "Z",
+                        "title":"当前水位"
+                    },
+                    {
+                        "data": "W",
+                        "title":"当前库容"
+                    },
+                    {
+                        "data": "FSLTDZ",
+                        "title":"讯项水位"
+                    },
+                    {
+                        "data": "ZTM",
+                        "title":"时间"}
+                ]
+            } );
+
+//            接口地址：http://192.168.110.233:678/WebGis/AjaxHandler/GeneralDataHandler.ashx
+//                    参数：sqlKey = Water.GetLEDRainAndWater_DZSK
+//            params = BeginTime,EndTime
+//            BeginTime = 2016-05-16 08:00:00
+//            EndTime = 2016-05-17 08:00:00
+
+
+            realTime();
+
+            function realTime(startTime,endTime){
+                var addvcd = 440000,
+                    key = "yesteday led",
+                    currentTime="",
+                currentTimeHours=new Date().getHours();//2015/12/25
+                //currentTime=new Date().toLocaleDateString();//2015/12/25
+                currentTime=new Date().toLocaleString();//2015/12/25 下午15:24
+              // currentTime = 7;
+                 alert(currentTime);
+
+
+                if(currentTimeHours <  8 ){
+                    startTime = "昨天8点" ;
+                    endTime = currentTime;
+                    var str="<h3 class='text-center'>讯请简报("+ startTime +"至"+ endTime +  ")</h3>";
+                    $("#example_wrapper").before(str);
+                }else{
+                    //大于8点
+                    startTime = "早上8点" ;
+                    endTime = currentTime;
+                    var str="<h3 class='text-center'>讯请简报("+ startTime +"至"+ endTime +  ")</h3>";
+                    $("#example_wrapper").before(str);
+
+                }
+
+            }
+
+
+        } );
+
+    </script>
+</head>
+<body  >
+
+<table id="example" class="display" cellspacing="0" width="100%">
+
+</table>
+</body>
+</html>

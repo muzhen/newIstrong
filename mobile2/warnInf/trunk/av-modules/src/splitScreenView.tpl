@@ -1,38 +1,54 @@
-﻿<div class="col-sm-6" >
+﻿<div class="col-sm-6  left-part" >
 
        <div class="row mar-0">
            <!--卫星云图 cloud -->
-           <div class="com-sm-12"   style="height:250px; padding-bottom:1%;" >
-               <img ms-attr-src="{{cloudSrc}}" alt=""/>{{cloudSrc1}}
+           <div class="com-sm-12   pad-15 pad-t-0"   style="height:30%; "  >
+               <img ms-attr-src="{{cloudSrc}}" alt="" />
+               <div class="mark-icon top-15" ms-on-click="cloudFun"></div>
+               <div class="latestTime top-15">{{currentTime}}</div>
            </div>
-           <!--台风路径-->
-           <div class="col-sm-6" style="min-height:200px;     padding-left: 0;">
-               <img ms-attr-src="{{typhoonSrc}}" alt=""/>
+           <!--台风路径typhoon -->
+           <div class="col-sm-6  pad-15 pad-b-0" style="height:70%; " >
+               <iframe src="http://www.istrongcloud.com:8001/release/index-lstf.html?popularize=false#route" height="100%" width="100%" frameborder="0"></iframe>
+               <div class="mark-icon right-35"  ms-on-click="typhoonFun"></div>
+               <div class="latestTime left-35">{{currentTime}}</div>
            </div>
            <!--气象雷达-->
-           <div class="col-sm-6 " style="min-height:200px;   padding-right: 0;">
+           <div class="col-sm-6  pad-15 pad-b-0" style="height:70%; " >
                <img ms-attr-src="{{weatherSrc}}" alt=""/>
+                  <div class="mark-icon right-35"  ms-on-click="weatherFun"></div>
+                  <div class="latestTime left-35">{{currentTime}}</div>
            </div>
        </div>
 </div>
-<!--雨量等值面及量级统计-->
-<div class="col-sm-6 right-part" >
-    <div class="  content ">
-      <div class=" " style="width:100%;height:45%; padding-bottom:1%;">
-            <img src="../av-modules/src/static/img/sea.jpg" alt=""/>
-     </div>
-     <div class="  rain ">
-         <h3 class="text-center">今日降雨实况</h3>
-         <ul  ms-each="cloudData" class="row">
-             <li class="col-sm-6">
-                 {{el.level_name}}<small>{{el.level_num}}</small>
-                 <span class="pull-right">{{el.value}}</span>
-             </li>
-         </ul>
-         <p>
-            今日8点至今全县有10个镇发生最大降雨出现在马江镇，累计雨量64毫米。
-         </p>
-     </div>
+    <!--雨量等值面及量级统计-->
+    <div class="col-sm-6 right-part"  >
+        <div class=" content  ">
+          <div class=" rain-chart" >
+                <img src="../av-modules/src/static/img/sea.jpg" alt=""/>
+                <!--<img ms-attr-src="{{weatherSrc}}"  alt=""/>-->
+                <ul ms-each="rainData"><!--雨量条形图 -->
+                  <li   >
+                    <div ms-css-background="el.color" >
+                    </div>
+                     <span>{{el.num}} </span>
+                  </li>
+                </ul>
+        </div>
+        <div class="  rain-info ">
+             <h3 class="text-center">今日降雨实况</h3>
+             <ul  ms-each="cloudData" class="row">
+                 <li class="col-sm-6">
+                     {{el.level_name}}<small>{{el.level_num}}</small>
+                     <span class="pull-right">{{el.value}}</span>
+                 </li>
+             </ul>
+             <p>
+                今日8点至今全县有10个镇发生最大降雨出现在马江镇，累计雨量64毫米。
+             </p>
+        </div>
+        <div class="mark-icon  "  ms-on-click="rainFun"></div>
+        <div class="latestTime ">{{currentTime}}</div>
 
-     </div>
+    </div>
 </div>

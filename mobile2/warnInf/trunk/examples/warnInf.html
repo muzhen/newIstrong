@@ -10,8 +10,8 @@
 </head>
 <body >
 
-<div class="container-fluid"  ms-controller="test" >
-    <h3>闽侯县水利局 <span class="pull-right ">2015年7月3日 11:22</span></h3>
+<div class="container-fluid pad-15"  ms-controller="test" >
+    <p>闽侯县水利局 <span class="pull-right ">2015年7月3日 11:22</span></p>
     <div class="row" ms-controller="splitScreenPart"   ms-include-src="{{splitScreenViewTpl}}">
 
     </div>
@@ -26,14 +26,29 @@
 
               var Inf=avalon.define({
                   $id:"test",
-                  splitScreenViewTpl: require.toUrl('splitScreenView')+'.tpl'
+                  splitScreenViewTpl: require.toUrl('splitScreenView')+'.tpl',
+
+                  cloudFun:function(){//卫星云图
+                    alert("卫星云图");
+                  },
+                  typhoonFun:function(){//台风路径
+                      alert("台风路径");
+                  },
+                  weatherFun:function(){//气象雷达
+                      alert("气象雷达");
+                  },
+                  rainFun:function(){//雨量
+                      alert("雨量");
+                  }
               });
               var splitScreenView=partData.init({
                   clid:"splitScreenPart",
                   data:{
                       a1:"http://wdy.fzqx.gov.cn:2001/Files/Weather/SAT/Static/XML/FY2D_WCN_L_DLCS_P1/1/FY2D_WCN_L_DLCS_P1_TOP10.xml",//卫星云图
                       a2:"http://wdy.fzqx.gov.cn:2001/Files/Weather/RAD/Static/XML/BEFZ_R_19_P1/1/0.5/BEFZ_R_19_P1_TOP10.xml",//气象雷达
-                      a3:"rain.json"//雨量
+                      a3:"http://192.168.110.233:9995/api/mobilev1/rain/grade/getrainavgcount?addvcd=440000&include_self=false&time=(2016-04-13T08:00:00,2016-04-14T10:17:00]&stat_type=个镇",//雨量下面的数据列表
+                      a4:"data.json",//雨量旁边的条形图
+                      a5:"http://192.168.110.233:9995/RainfallIsoline/RainIsolineDataProvider.ashx?start=2014-1-1%2008:00&end=2014-1-1%2008:00&Isoline=true&IsolineArea=true#"//雨量等值面图
                   }
               });
 
